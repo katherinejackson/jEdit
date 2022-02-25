@@ -24,6 +24,7 @@ package org.gjt.sp.util;
 
 import java.io.*;
 import java.util.*;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -354,7 +355,8 @@ public class Log
 	//{{{ _log() method
 	private static void _log(int urgency, String source, String message)
 	{
-		String fullMessage = '[' + urgencyToString(urgency) + "] " + source
+		Date date = new Date();
+		String fullMessage = date.toString() + " [" + urgencyToString(urgency) + "] " + source
 			+ ": " + message;
 
 		try
