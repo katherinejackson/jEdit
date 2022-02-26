@@ -124,6 +124,15 @@ public class HistoryTextArea extends JTextArea
 
 	//{{{ Protected members
 
+	//{{{ getController() method
+	/**
+	 * Returns the HistoryText controller.
+	 */
+	public HistoryText getController()
+	{
+		return this.controller;
+	}
+
 	//{{{ processKeyEvent() method
 	protected void processKeyEvent(KeyEvent evt)
 	{
@@ -200,7 +209,7 @@ public class HistoryTextArea extends JTextArea
 	
 	//}}}
 
-	//{{{ Private variables
-	private HistoryText controller;
+	//{{{ Protected variables
+	protected HistoryText controller;
 	//}}}
 }

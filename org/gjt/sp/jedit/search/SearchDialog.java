@@ -276,6 +276,7 @@ public class SearchDialog extends EnhancedDialog implements EBComponent
 
 	// fields
 	private HistoryTextArea find, replace;
+	private HistoryTextList historyList;
 
 	private JRadioButton stringReplace, beanShellReplace;
 
@@ -351,6 +352,8 @@ public class SearchDialog extends EnhancedDialog implements EBComponent
 		label.setToolTipText(jEdit.getProperty("search.find.tooltip"));
 		label.setLabelFor(find);
 		label.setBorder(new EmptyBorder(12,0,2,0));
+		historyList = new HistoryTextList(find.getController());
+		JScrollPane scrollPane = new JScrollPane(historyList);
 
 		cons.gridx = 0;
 		cons.weightx = 0.0;
@@ -360,6 +363,10 @@ public class SearchDialog extends EnhancedDialog implements EBComponent
 		cons.weightx = 1.0;
 		cons.weighty = 1.0;
 		fieldPanel.add(new JScrollPane(find),cons);
+		cons.gridy++;
+		cons.weightx = 1.0;
+		cons.weighty = 1.0;
+		fieldPanel.add(scrollPane,cons);
 		cons.gridy++;
 	} //}}}
 
@@ -813,6 +820,7 @@ public class SearchDialog extends EnhancedDialog implements EBComponent
 			}
 
 			find.addCurrentToHistory();
+			historyList.updateList();
 			SearchAndReplace.setSearchString(find.getText());
 
 			return true;
